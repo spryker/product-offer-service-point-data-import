@@ -15,7 +15,7 @@ use Spryker\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\ProductOfferServicePointDataImport\Business\DataSet\ProductOfferServiceDataSetInterface;
 
-class ServiceKeyToServiceUuidDataImportStep extends PublishAwareStep implements DataImportStepInterface
+class ServiceKeyToIdServiceDataImportStep extends PublishAwareStep implements DataImportStepInterface
 {
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
@@ -24,7 +24,7 @@ class ServiceKeyToServiceUuidDataImportStep extends PublishAwareStep implements 
      */
     public function execute(DataSetInterface $dataSet): void
     {
-        $dataSet[ProductOfferServiceDataSetInterface::COLUMN_SERVICE_UUID] = $this->getServiceUuidByServiceKey(
+        $dataSet[ProductOfferServiceDataSetInterface::COLUMN_ID_SERVICE] = $this->getIdServiceByServiceKey(
             $dataSet[ProductOfferServiceDataSetInterface::COLUMN_SERVICE_KEY],
         );
     }
@@ -34,22 +34,22 @@ class ServiceKeyToServiceUuidDataImportStep extends PublishAwareStep implements 
      *
      * @throws \Spryker\Zed\DataImport\Business\Exception\EntityNotFoundException
      *
-     * @return string
+     * @return int
      */
-    protected function getServiceUuidByServiceKey(string $serviceKey): string
+    protected function getIdServiceByServiceKey(string $serviceKey): int
     {
-        /** @var string|null $serviceUuid */
-        $serviceUuid = $this->getServiceQuery()
-            ->select(SpyServiceTableMap::COL_UUID)
+        /** @var string|null $idService */
+        $idService = $this->getServiceQuery()
+            ->select(SpyServiceTableMap::COL_ID_SERVICE)
             ->findOneByKey($serviceKey);
 
-        if (!$serviceUuid) {
+        if (!$idService) {
             throw new EntityNotFoundException(
                 sprintf('Could not find service by key "%s".', $serviceKey),
             );
         }
 
-        return $serviceUuid;
+        return (int)$idService;
     }
 
     /**
