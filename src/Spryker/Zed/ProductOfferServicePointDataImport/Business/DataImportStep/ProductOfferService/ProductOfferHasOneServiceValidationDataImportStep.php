@@ -59,7 +59,7 @@ class ProductOfferHasOneServiceValidationDataImportStep extends PublishAwareStep
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
-     * @return list<string>
+     * @return array<string>
      */
     protected function getServiceIdsByIdProductOffer(DataSetInterface $dataSet): array
     {
