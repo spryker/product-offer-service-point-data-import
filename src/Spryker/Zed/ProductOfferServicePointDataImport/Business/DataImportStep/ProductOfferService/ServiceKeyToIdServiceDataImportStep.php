@@ -17,11 +17,6 @@ use Spryker\Zed\ProductOfferServicePointDataImport\Business\DataSet\ProductOffer
 
 class ServiceKeyToIdServiceDataImportStep extends PublishAwareStep implements DataImportStepInterface
 {
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         $dataSet[ProductOfferServiceDataSetInterface::COLUMN_ID_SERVICE] = $this->getIdServiceByServiceKey(
@@ -52,9 +47,6 @@ class ServiceKeyToIdServiceDataImportStep extends PublishAwareStep implements Da
         return (int)$idService;
     }
 
-    /**
-     * @return \Orm\Zed\ServicePoint\Persistence\SpyServiceQuery
-     */
     protected function getServiceQuery(): SpyServiceQuery
     {
         return SpyServiceQuery::create();

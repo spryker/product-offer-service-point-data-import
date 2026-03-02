@@ -41,9 +41,6 @@ class ProductOfferServiceDataImportPluginTest extends Unit
      */
     protected ProductOfferServicePointDataImportCommunicationTester $tester;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -51,9 +48,6 @@ class ProductOfferServiceDataImportPluginTest extends Unit
         $this->tester->ensureProductOfferServiceTableAndRelationsAreEmpty();
     }
 
-    /**
-     * @return void
-     */
     public function testImportImportsData(): void
     {
         // Arrange
@@ -85,9 +79,6 @@ class ProductOfferServiceDataImportPluginTest extends Unit
         $this->assertCount(2, $this->tester->getProductOfferServiceQuery());
     }
 
-    /**
-     * @return void
-     */
     public function testGetImportTypeReturnsExpectedType(): void
     {
         // Arrange

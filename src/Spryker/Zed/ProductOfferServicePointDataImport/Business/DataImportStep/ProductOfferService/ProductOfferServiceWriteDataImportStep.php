@@ -23,11 +23,6 @@ class ProductOfferServiceWriteDataImportStep extends PublishAwareStep implements
      */
     protected const PRODUCT_OFFER_SERVICE_PUBLISH = 'ProductOfferService.product_offer_service.publish';
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         $this->assertDataSet($dataSet);

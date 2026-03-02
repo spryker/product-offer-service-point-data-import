@@ -20,9 +20,6 @@ use Spryker\Zed\ProductOfferServicePointDataImport\Business\DataImportStep\Produ
  */
 class ProductOfferServicePointDataImportBusinessFactory extends DataImportBusinessFactory
 {
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface
-     */
     public function getProductOfferServiceDataImporter(): DataImporterInterface
     {
         $dataImporter = $this->getCsvDataImporterFromConfig(
@@ -39,33 +36,21 @@ class ProductOfferServicePointDataImportBusinessFactory extends DataImportBusine
         return $dataImporter;
     }
 
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface
-     */
     public function createProductOfferServiceWriteDataImportStep(): DataImportStepInterface
     {
         return new ProductOfferServiceWriteDataImportStep();
     }
 
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface
-     */
     public function createServiceKeyToIdServiceDataImportStep(): DataImportStepInterface
     {
         return new ServiceKeyToIdServiceDataImportStep();
     }
 
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface
-     */
     public function createProductOfferHasOneServiceValidationDataImportStep(): DataImportStepInterface
     {
         return new ProductOfferHasOneServiceValidationDataImportStep();
     }
 
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface
-     */
     public function createProductOfferReferenceToIdProductOfferDataImportStep(): DataImportStepInterface
     {
         return new ProductOfferReferenceToIdProductOfferDataImportStep();

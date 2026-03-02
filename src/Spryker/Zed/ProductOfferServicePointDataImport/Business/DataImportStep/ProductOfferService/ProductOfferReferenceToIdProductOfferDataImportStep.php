@@ -17,11 +17,6 @@ use Spryker\Zed\ProductOfferServicePointDataImport\Business\DataSet\ProductOffer
 
 class ProductOfferReferenceToIdProductOfferDataImportStep extends PublishAwareStep implements DataImportStepInterface
 {
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         $dataSet[ProductOfferServiceDataSetInterface::COLUMN_ID_PRODUCT_OFFER] = $this->getIdProductOfferByProductOfferReference(
@@ -52,9 +47,6 @@ class ProductOfferReferenceToIdProductOfferDataImportStep extends PublishAwareSt
         return (int)$idProductOffer;
     }
 
-    /**
-     * @return \Orm\Zed\ProductOffer\Persistence\SpyProductOfferQuery
-     */
     protected function getProductOfferQuery(): SpyProductOfferQuery
     {
         return SpyProductOfferQuery::create();
